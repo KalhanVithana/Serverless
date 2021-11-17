@@ -1,0 +1,35 @@
+export  const LOADSUCESS = 'LOADSUCESS'
+export  const ADDUSERSUCESS = 'ADDUSERSUCESS'
+export  const USERERROR = 'USERERROR'
+
+
+export  const LOADLOGIN = 'LOADLOGIN'
+export  const LOGINSUCESS = 'LOGINSUCESS'
+export  const LOGINERROR = 'LOGINERROR'
+
+
+export  const LOADCUSTOMER = 'LOADCUSTOMER'
+export  const CUSTOMERSUCESS = 'CUSTOMERSUCESS'
+export  const CUSTOMERERROR = 'CUSTOMERERROR'
+
+export  const LOADPASSWORD = 'LOADPASSWORD'
+export  const VERIFYSUCESS = 'VERIFYSUCESS'
+export  const VERIFYERROR = 'VERIFYERROR'
+
+export  const LOADFORGOT = 'LOADFORGOT'
+export  const FORGOTSUCESS = 'FORGOTSUCESS'
+export  const FORGOTERROR = 'FORGOTERROR'
+
+export  const LOADRESET = 'LOADRESET'
+export  const RESETSUCESS = 'RESETSUCESS'
+export  const RESETERROR = 'RESETERROR'
+
+export  const LOADAUTH = 'LOADAUTH'
+export  const AUTHSUCCESS = 'AUTHSUCCESS'
+
+
+
+export  const LOADDATA = 'LOADDATA'
+export  const SUCCESDATA = 'SUCCESDATA'
+
+
