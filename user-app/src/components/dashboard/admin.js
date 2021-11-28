@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { MDBCard } from 'mdbreact'
 import React, { useState,useEffect } from 'react'
-import NavbarPage from './NavbarPage'
 import { useDispatch, useSelector } from 'react-redux'
-import Table from './Table';
 import { Loaduser } from '../redux/action/user';
 import UserTable from './UserTable';
 export default function Admin() {
@@ -12,20 +10,20 @@ const dispatch = useDispatch();
 
 useEffect(async() => {
 
+ 
     dispatch(Loaduser())
+   
+
 }, [dispatch,])
 
 
-const DataTable = () => {
-    return data.map((res, i) => {
-      return <Table key={i} obj={res} />
-    })
-  }
 
 
+
+  let usertoken = localStorage.getItem("Authorization")
     return (
         <div>
-       <UserTable obj={data}/>
+       <UserTable obj={data} token= {usertoken}/>
         </div>
     )
 }

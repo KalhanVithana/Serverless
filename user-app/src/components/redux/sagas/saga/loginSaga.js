@@ -12,6 +12,7 @@ export function* CreateLoginAsync({ payload: data }) {
         if (response) {
             yield put(SucessLogin(response.data))
             yield toast.success("login success")
+            yield localStorage.setItem('Authorization', response.data.content.token)
            yield window.location ="/auth/admin"
         }
     } catch (error) {

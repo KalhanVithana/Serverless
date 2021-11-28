@@ -26,6 +26,7 @@ export  const RESETERROR = 'RESETERROR'
 
 export  const LOADAUTH = 'LOADAUTH'
 export  const AUTHSUCCESS = 'AUTHSUCCESS'
+export  const AUTHFAILD = 'AUTHFAILD'
 
 
 

@@ -1,8 +1,9 @@
-import { AUTHSUCCESS, LOADAUTH } from "../action/constant";
+import { AUTHSUCCESS, LOADAUTH,AUTHFAILD } from "../action/constant";
 
 const initialState = {
     AuthUser:[],
     loading:false,
+    ErrorStatus:null
    
 }
 
@@ -15,8 +16,15 @@ export const AuthReducer = (state=initialState,action)=>{
             return{
                 ...state,
                 loading:false,
+                ErrorStatus:false,
                 AuthUser:action.payload
             }
+        case AUTHFAILD:
+                return{
+                    ...state,
+                    loading:false,
+                    ErrorStatus:true
+                }
     
         default:
             return state;

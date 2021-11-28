@@ -6,7 +6,7 @@ import { useNavigate } from "react-router"
 import { put, takeEvery, takeLatest, call, all } from "redux-saga/effects"
 
 export function* CreateCustomerAsync({ payload: data }) {
-    const token = yield localStorage.getItem('x-auth');
+    const token = yield localStorage.getItem('Authorization');
     const { response, error } = yield call(RegsiterCustomerApi, data, token)
     if(response){
         yield put(RegisterCustomer(response.data))

@@ -1,0 +1,165 @@
+
+
+service: myapp-lambda
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+        - ses:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:938344291195:table/userTables
+        - arn:aws:dynamodb:us-east-1:938344291195:table/customerTables
+       
+
+  
+
+
+
+functions:         
+  userRegister:
+    handler: src/route.userRegister
+    events:
+      - http:
+          path: /user1
+          method: post
+          cors: true  
+  verifyUser:
+    handler: src/route.verifyUser
+    events:
+      - http:
+          path: /veri
+          method: put
+          cors: true                 
+  deleteData:
+    handler: src/route.deleteData
+    events:
+      - http:
+          path: /user/{id}
+          method: delete
+          cors: true 
+  forgotPassword:
+    handler: src/route.forgotPassword
+    events:
+      - http:
+          path: /forgot
+          method: put
+          cors: true   
+  resetPassword:
+    handler: src/route.resetPassword
+    events:
+      - http:
+          path: /reset
+          method: put
+          cors: true 
+  userLogin:
+    handler: src/route.userLogin
+    events:
+      - http:
+          path: /login
+          method: post
+          cors: true
+  authLogin:
+    handler: src/route.authLogin
+    events:
+      - http:
+          path: /authlogin
+          method: post
+          cors: true         
+  fetchUsers:
+    handler: src/route.fetchUsers
+    events:
+      - http:
+          path: /users
+          method: get
+          cors: true
+  fetchId:
+    handler: src/route.fetchId
+    events:
+      - http:
+          path: /users/{id}
+          method: get
+          cors: true
+  validateID:
+    handler: src/route.validateID
+    events:
+      - http:
+          path: /validate
+          method: get 
+          cors: true            
+  registerCustomer:
+    handler: src/route.registerCustomer
+    events:
+      - http:
+          path: /customer
+          method: post 
+          cors: true     
+  fetchCustomers:
+    handler: src/route.fetchCustomers
+    events:
+      - http:
+          path: /customer
+          method: get 
+          cors: true
+  deleteCustomer:
+    handler: src/route.deleteCustomer
+    events:
+      - http:
+          path: /customer/{id}
+          method: delete 
+          cors: true         
+  updateCustomer:
+    handler: src/route.updateCustomer
+    events:
+      - http:
+          path: /customer
+          method: put 
+          cors: true    
+  sendEmailApi:
+    handler: src/route.sendEmailApi
+    events:
+      - http:
+          path: /send-email
+          method: post 
+          cors: true
+
+resources: 
+      Resources:
+        userTables:
+          Type: AWS::DynamoDB::Table
+          Properties:
+            TableName: userTables
+            AttributeDefinitions:
+              - AttributeName: id
+                AttributeType: S
+            KeySchema:
+              - AttributeName: id
+                KeyType: HASH
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1  
+        customerTables:
+          Type: AWS::DynamoDB::Table
+          Properties:
+            TableName: customerTables
+            AttributeDefinitions:
+              - AttributeName: id
+                AttributeType: S
+            KeySchema:
+              - AttributeName: id
+                KeyType: HASH
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1        
+              
+            
+
+
+    

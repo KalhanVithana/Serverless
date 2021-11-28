@@ -4,22 +4,21 @@ export const LoginApi =  (data) => {
     console.log("call apiiii login" + JSON.stringify(data))
     const { email, password } = data;
     console.log("name" + email)
-    return axios.post('http://localhost:4000/user/login', { email, password })
+    return axios.post('https://r4uzncqbze.execute-api.us-east-1.amazonaws.com/dev/login', { email, password })
 }
 
 export const AuthLoginApi =  (data) => {
     console.log("call apiiii login" + JSON.stringify(data))
     const { email, password } = data;
     console.log("name" + email)
-    return axios.post('http://localhost:4000/user/auth/login', { email, password })
+    return axios.post('https://r4uzncqbze.execute-api.us-east-1.amazonaws.com/dev/authlogin', { email, password })
 }
 
 
 
 export const RegsiterApi = (data)=>{
-    console.log("call"+data)
-    const {email,password} =data;
-    return axios.post('http://localhost:4000/user/register',data).then(response => ({ response }))
+   
+    return axios.post('https://r4uzncqbze.execute-api.us-east-1.amazonaws.com/dev/user1',data).then(response => ({ response }))
     .catch(error => ({ error }))
 }
 
@@ -27,16 +26,15 @@ export const RegsiterApi = (data)=>{
 
 export const RegsiterCustomerApi = (data,token)=>{
     console.log("call"+token)
-    return axios.post('http://localhost:4000/user/admin/add',data,{headers:{'x-auth':token}}).then(response => ({ response }))
+    return axios.post('https://r4uzncqbze.execute-api.us-east-1.amazonaws.com/dev/customer',data,{ headers: { 'Authorization': token },}).then(response => ({ response }))
     .catch(error => ({ error }))
 }
 
 export const VerificationApi=(data,token)=>{
-    console.log(data)
+    console.log("yoooooooooooo",data)
     const {verifycode} =data
-   return  axios.post('http://localhost:4000/user/ver',data,{headers:{'x-auth':token}}).then(response => ({ response }))
+   return  axios.put('https://r4uzncqbze.execute-api.us-east-1.amazonaws.com/dev/veri',data,{ headers: { 'Authorization': token },}).then(response => ({ response }))
    .catch(error => ({ error }))
-
 }
 
 export const resetforgotapi =(data)=>{
@@ -46,12 +44,13 @@ export const resetforgotapi =(data)=>{
 }
 
 export const Authapi =(token)=>{
-    return axios.post('http://localhost:4000/user/auth',null,{headers:{'x-auth':token}}).then(response => ({ response }))
+
+     return axios.get('https://r4uzncqbze.execute-api.us-east-1.amazonaws.com/dev/validate',{ headers: { 'Authorization': token }, }).then(response => ({ response }))
     .catch(error => ({ error }))
 }
 
 export const Fetchapi =(token)=>{
-    return axios.get('http://localhost:4000/user/admin/customers', { headers: { 'x-auth': token } }).then(response => ({ response }))
+    return axios.get('https://r4uzncqbze.execute-api.us-east-1.amazonaws.com/dev/customer', { headers: { 'Authorization': token }, }).then(response => ({ response }))
     .catch(error => ({ error }))
 }
 

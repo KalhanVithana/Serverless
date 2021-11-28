@@ -9,11 +9,12 @@ export function* CreateRegisterAsync({ payload: data }) {
     const { response, error } = yield call(RegsiterApi, data);
     const loginRes = yield call(LoginApi, data)
     // console.log("yoo", loginRes)
+    console.log("response ++++",response)
     if (response) {
-        yield put(RegisterSucessData(response.data));
-        yield put(SucessLogin(loginRes.data))
-        //console.log(JSON.stringify(loginRes.data.token))
-        yield localStorage.setItem('x-auth', loginRes.data.token)
+      yield put(RegisterSucessData(response));
+       yield put(SucessLogin(loginRes.data))
+      console.log("data",loginRes.data.content.token)
+        yield localStorage.setItem('Authorization', loginRes.data.content.token)
         yield toast.success("Signup success")
         yield window.location ="/valid"
     } else yield put({ type: USERERROR, payload: error.response.data.msg });

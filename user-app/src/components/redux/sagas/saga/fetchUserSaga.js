@@ -6,11 +6,12 @@ import { useNavigate } from "react-router"
 import { put, takeEvery, takeLatest, call, all } from "redux-saga/effects"
 
 export function* CreatFetchAsync() {
-    const token = yield localStorage.getItem('x-auth');
+    
+    const token = yield localStorage.getItem('Authorization');
     const { response, error } = yield call(Fetchapi, token)
-    console.log(response)
+    console.log("usersss",response.data.content)
     if (response) {
-        yield put(SuccessData(response.data))
+        yield put(SuccessData(response.data.content))
     }
 
 }

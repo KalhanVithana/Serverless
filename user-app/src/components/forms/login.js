@@ -9,7 +9,7 @@ import {
   MDBCol,
 } from "mdbreact";
 import "../../assets/form.css";
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   LoadDataList,
@@ -19,11 +19,7 @@ import {
 } from "../redux/action/user";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../headers/nav";
-import { ToastContainer, toast } from "react-toastify";
 import Errorhandle from "../../misc/errorhandle";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Form,
   Input,
@@ -44,7 +40,7 @@ export default function Login() {
 
   useEffect(async () => {
     if (state) {
-      navigate("/auth/admin");
+      //navigate("/auth/admin");
     }
   }, [state]);
 
@@ -134,7 +130,7 @@ export default function Login() {
                 type="password"
                 className="form-input"
                 placeholder="Enter your password"
-                style={{ right: "1rem" }}
+                // style={{ left: "0.1%" }}
               />
             </Form.Item>
             <div style={{marginRight:'4rem',marginBottom:'2rem'}}>

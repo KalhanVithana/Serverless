@@ -1,5 +1,4 @@
 import React from 'react'
-import NavbarPage from '../components/dashboard/NavbarPage'
 import NavBar from '../components/headers/nav'
 import '../assets/home.css'
 import img from '../assets/images/webpurp.png'

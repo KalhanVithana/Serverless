@@ -150,7 +150,7 @@ export default function Register() {
                 type="password"
                 className="form-input"
                 placeholder="Enter your password"
-                style={{ right: "1rem" }}
+               
               />
             </Form.Item>
 
@@ -178,7 +178,7 @@ export default function Register() {
                 type="password"
                 type="password"
                 placeholder="Enter your password"
-                style={{ right: "1rem" }}
+              
               />
             </Form.Item>
 

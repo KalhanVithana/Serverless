@@ -10,7 +10,6 @@ import {
 } from "mdbreact";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import NavbarPage from "./NavbarPage";
 import { LOADCUSTOMER } from "../redux/action/constant";
 import { LoadCustomer } from "../redux/action/user";
 import { Form, Input, InputNumber, Button, Card, Row, Col } from "antd";
@@ -39,13 +38,12 @@ export default function Registeruser() {
   /* eslint-enable no-template-curly-in-string */
 
   const onFinish = async (values) => {
-    const { fname, lname, email, password, cfmpassword } = values;
+    const { fname, lname, email, mobile } = values;
     const formdata = {
       fname,
       lname,
       email,
-      password,
-      cfmpassword,
+      mobile,
     };
     console.log(formdata);
     dispatch(LoadCustomer(formdata));
@@ -121,47 +119,26 @@ export default function Registeruser() {
           {error && (<Errorhandle message={error}/>)}
 
           <Form.Item
-            name="password"
-            label="password"
+            name="mobile"
+            label="mobile"
             rules={[
               {
                 required: true,
               },
               { whitespace: true },
-              {
-                pattern:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$/,
-                message:
-                  ' "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"',
-              },
+              // {
+              //   pattern:
+              //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$/,
+              //   message:
+              //     ' "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"',
+              // },
             ]}
             hasFeedback
           >
-            <Input.Password type='password'   className="form-input" placeholder="Enter your password" style={{right:'1rem'}} />
+            <Input.Password type='number'   className="form-input" placeholder="Enter your mobile" />
           </Form.Item>
 
-          <Form.Item
-            name="cfmpassword"
-            label="confirm password"
-            dependencies={["password"]}
-            rules={[
-              {
-                required: true,
-                message: "Please confirm your password!",
-              },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue("password") === value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error("password doens't match!"));
-                },
-              }),
-            ]}
-            hasFeedback
-          >
-            <Input.Password type='password'  type="password" placeholder="Enter your password" style={{right:'1rem'}} />
-          </Form.Item>
+        
           
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 7 }}>
